@@ -11,6 +11,7 @@ class Vector
 
 public:
 	Vector():elements(nullptr),first_free(nullptr),cap(nullptr){}
+	Vector(std::initializer_list<T> s);
 	Vector(const Vector&);
 	Vector& operator=(const Vector&);
 	~Vector();

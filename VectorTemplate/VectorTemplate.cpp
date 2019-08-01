@@ -26,10 +26,25 @@ int main()
 	Str.push_back('A');
 	Str.push_back('D');
 	print(Str);
+	Vector<int> numbers = { 1,2,3,4,5,6 };
+	print(numbers);
+	Vector<char> letters = { 'a','b','c' };
+	print(letters);
 	cout << "Hello CMake." << endl;
 	return 0;
 }
 
+
+template<typename T>
+Vector<T>::Vector(std::initializer_list<T> s):
+	elements(nullptr), first_free(nullptr), cap(nullptr)
+{
+	for (auto& i : s)
+	{
+		chk_n_alloc();
+		alloc.construct(first_free++, i);
+	}
+}
 
 template<typename T>
 Vector<T>::Vector(const Vector& s)
